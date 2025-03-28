@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculatrice</title>
+    <link rel="stylesheet" href="calculatrice.css">
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" class="display" disabled />
+        <div class="buttons">
+            <button class="button" >7</button>
+            <button class="button" >8</button>
+            <button class="button" >9</button>
+            <button class="button">+</button>
+
+            <button class="button" >4</button>
+            <button class="button" >5</button>
+            <button class="button" >6</button>
+            <button class="button" >-</button>
+
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button" >*</button>
+
+            <button class="button" >0</button>
+            <button class="button" >C</button>
+            <button class="button" >eff</button>
+            <button class="button" >/</button>
+            <button class="button" class="egale">=</button>
+        </div>
+    </div>
+
+    <script>
+       let btn= document.querySelectorAll('button');
+       let inp= document.querySelector('input')
+
+       for(let i=0; i< btn.length; i++){
+          btn[i].addEventListener("click", ()=>{
+           if (btn[i].textContent === "=") {
+               try {
+                   inp.value = eval(inp.value);
+               }
+               catch {
+               inp.value = "Erreur";
+               }
+           } else if (btn[i].textContent === "C") {
+               inp.value = "";
+           } else if(btn[i].textContent=== "eff"){
+               inp.value= inp.value.slice(0,-1)
+           }
+           else {
+               inp.value += btn[i].textContent;
+           }
+          })
+       }
+    </script>
+</body>
+</html>
